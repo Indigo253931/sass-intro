@@ -12,18 +12,17 @@
 - Written and maintained by Zurb, who also own the [Foundation framework](http://foundation.zurb.com/)
 - Sass is a pre-processor for CSS, which means you write code in Sass and let Sass manage your CSS for you.
 - Adds the power of math, variables, logic and more
-- There are 2 syntaxes available (.sass and .scss with Compass)
 - Makes writing CSS even _MORE_ fun than it already is!
 
 ## Installation
 
-Sass is automatically installed with Rails so 
+Sass is automatically installed with Rails so don't need to do much if you're using Rails. The only change you should need to make is to 
+change ``application.css`` to ``application.scss``.
 
-If you are adding Sass 
-
-We'll cover how to add Sass 
+We'll cover how to add Sass to a Javascript app in a few weeks.
 
 ### Starter Code 
+Clone the repo, download it, and make sure the app runs.
 
 ## What makes up Sass?
 
@@ -36,7 +35,7 @@ We'll cover how to add Sass
 
 ## Variables
 
-Sass enables you to use variables in your CSS. The has the huge result of making our CSS less complext by:
+Sass enables you to use variables in your CSS. The has the huge result of making our CSS less complex by:
 
 - Make code easier to change because they reduce duplication
 - Name things by their intent and be more semantic
@@ -50,7 +49,7 @@ $my-variable: value;
 
 ```
 
-You can make variables of hex colors, sizes, strings, and even other variables! This let's you write code like this to 
+You can make variables of hex colors, sizes, strings, and even other variables! Sass let's you write code like this to 
 make things easy to change.
 
 ``` css
@@ -61,11 +60,11 @@ $main-color: $blue;
 ```
 
 Sass allows you to use variables inside of ``{}`` like Ruby. Lets see how we can use this to standardize our media queries. 
-Our small media query is
-``` css
+Our small media query is 
+```css
 $small: "only screen and (max-width: 768px)";
 ```
-
+let's add this to our ``welcome.scss`` file.
 <details>
 ```css
 @media #{$small} { 
@@ -97,7 +96,7 @@ style the ``<a>`` tag inside an ``<h1>`` tag is ``h1 a``. Sass lets us express t
 ``` scss
 h1 {
     a {
-
+        /* Some selectors */ 
     }
 }
 ```
@@ -111,7 +110,7 @@ Some of the benefits can be lost if you over-nest so try to set a limit to nesti
 Sass also gives us the ability to select the parent so we can use modifier selectors too: 
 ```scss
 .table-row {
-    :first {
+    &:first {
         background-color: grey;
     }
 }
@@ -167,7 +166,7 @@ Let's make the links turn italic when you hover over them.
 a {
     color: $main-color;
     
-    :hover {
+    &:hover {
         font-style: italic;
     }
 }
@@ -179,8 +178,8 @@ a {
 If you need more complex CSS selectors check out the [Sass documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html). 
 
 ## Functions
-If we don't want to output CSS but we do want a value 
-``` css
+If we don't want to output CSS but we do want a value, we can use functions!
+```css
 /* Sass Function Syntax */
 @function name($num,$num2) {
     @return $num + $num2
@@ -228,9 +227,11 @@ Sass also has useful color functions
 
 <img src="images/hsla_manipulations.png" width="690px">
 
+Here's some more [detail](http://jackiebalzer.com/color) on exactly what is happening with color functions, 
+
 ### Independent Practice
 Write a function, ``column-size`` that takes a size in pixels and the number of columns and returns the appropriate column
-size.
+size in pixels.
 
 <details>
 ```css
@@ -242,23 +243,8 @@ size.
 
 ## @import
 Lastly, we can put our CSS in seperate files and use that structure to help organize our code. For example, we can create a 
-file for each of our controllers or a file that contains all of the colors in our app in a single file. We just need to 
-
-The Rails asset pipline 
-
-
-``` css
-/* Sass Mixin Syntax: */
-
-@mixin mixin-name($option) {
-    /* ...css code... */
-}
-
-a {
-    @include mixin-name;
-}
-
-```
+file for each of our controllers or a file that contains all of the colors in our app in a single file. We just need to use the import 
+command in the ``application.scss`` file, the Rails asset pipline takes care of the rest.
 
 ## Mixins
 Sass even gives you the ability to write macros or groups of CSS commands.
