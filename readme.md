@@ -59,7 +59,7 @@ $blue: #1d96bc;
 $main-color: $blue;
 ```
 
-Sass allows you to use variables inside of ``{}`` like Ruby. Lets see how we can use this to standardize our media queries. 
+Sass allows you to use variables inside of ``#{}`` like Ruby. Lets see how we can use this to standardize our media queries. 
 Our small media query is 
 ```css
 $small: "only screen and (max-width: 768px)";
@@ -68,7 +68,7 @@ let's add this to our ``welcome.scss`` file.
 <details>
 ```css
 @media #{$small} { 
-    a {
+    body {
         font-size: 16px;
     }
 }
